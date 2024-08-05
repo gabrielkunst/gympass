@@ -1,0 +1,30 @@
+{
+  "name": "@starter/api",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/server.ts",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsx watch ./src/server.ts",
+    "build": "tsup src --out-dir build",
+    "start": "node build/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
+  },
+  "devDependencies": {
+    "@starter/eslint-config": "*",
+    "@starter/prettier": "*",
+    "@starter/tsconfig": "*",
+    "@types/node": "20.13.0",
+    "tsup": "8.2.4",
+    "tsx": "4.16.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@starter/eslint-config/node"
+    ]
+  },
+  "prettier": "@starter/prettier"
+}
