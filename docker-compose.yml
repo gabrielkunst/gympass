@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: gympass-postgres
+    image: bitnami/postgresql:13
+    environment:
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_DATABASE=gympass
+    ports:
+      - '5432:5432'
+    volumes:
+      - gympass-postgres-data:/bitnami/postgresql
+
+volumes:
+  gympass-postgres-data:
