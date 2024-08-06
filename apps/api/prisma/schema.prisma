@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+model User {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  role         Role      @default(MEMBER)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  deletedAt    DateTime? @map("deleted_at")
+  checkIns     CheckIn[]
+
+  @@map("users")
+}
+
+model CheckIn {
+  id          String    @id @default(uuid())
+  validatedAt DateTime? @map("validated_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  deletedAt   DateTime? @map("deleted_at")
+  User        User      @relation(fields: [userId], references: [id])
+  userId      String    @map("user_id")
+  Gym         Gym       @relation(fields: [gymId], references: [id])
+  gymId       String    @map("gym_id")
+
+  @@map("check_ins")
+}
+
+model Gym {
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  latitude    Decimal
+  longitude   Decimal
+  createdAt   DateTime  @default(now()) @map("created_at")
+  deletedAt   DateTime? @map("deleted_at")
+  checkIns    CheckIn[]
+
+  @@map("gyms")
+}
