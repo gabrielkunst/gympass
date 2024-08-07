@@ -18,12 +18,15 @@
   },
   "dependencies": {
     "@prisma/client": "5.18.0",
-    "@starter/env": "*"
+    "@starter/env": "*",
+    "bcryptjs": "2.4.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "8.4.1",
     "@starter/eslint-config": "*",
     "@starter/prettier": "*",
     "@starter/tsconfig": "*",
+    "@types/bcryptjs": "2.4.6",
     "@types/node": "20.13.0",
     "@vitest/coverage-v8": "2.0.5",
     "@vitest/ui": "2.0.5",

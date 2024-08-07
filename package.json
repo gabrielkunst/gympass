@@ -34,7 +34,7 @@
   "prettier": "@starter/prettier",
   "lint-staged": {
     "*.{js,ts,tsx}": [
-      "eslint --fix --max-warnings=0 --no-ignore",
+      "eslint --fix",
       "prettier --write"
     ]
   }
